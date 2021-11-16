@@ -3,6 +3,7 @@ let express = require('express');
 let mongoose = require('mongoose');
 let apiRoutes = require("./api-routes");
 let dotenv = require('dotenv');
+let cors = require('cors');
 
 // Initialise the app
 let app = express();
@@ -23,8 +24,14 @@ else
 // Setup server port
 var port = process.env.PORT || 8080;
 
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions))
+
 // set default API route
-app.use('/', apiRoutes);
+app.use('/api', apiRoutes);
 
 // Launch app to listen to specified port
 app.listen(port, function () {

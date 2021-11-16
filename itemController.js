@@ -1,3 +1,5 @@
+const { get } = require('./itemModel');
+
 // Import item model
 Item = require('./itemModel');
 
